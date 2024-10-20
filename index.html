@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой персональный сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f2e6d4;
+            color: #333333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #f2e6d4;
+            max-width: 400px;
+            width: 90%; /* Адаптивная ширина */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Позволяет перенос на следующую строку */
+            gap: 15px; /* Уменьшенное расстояние для мобильных устройств */
+            margin-top: 20px;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .telegram { background-color: #00796b; }
+        .vk { background-color: #0077c2; }
+        .discord { background-color: #673ab7; }
+
+        .icon { width: 24px; height: 24px; } /* Уменьшенный размер для мобильных устройств */
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div class="container">
+        <p>Добро пожаловать!</p>
+        <p>Связь со мной:</p>
+        <div class="social-links">
+            <a href="https://t.me/fenec01" class="badge telegram">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="icon" alt="Telegram">
+                Telegram
+            </a>
+            <a href="https://vk.com/fenec" class="badge vk">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" class="icon" alt="VK">
+                VK
+            </a>
+            <a href="https://discord.com/users/ваш_дискорд_профиль" class="badge discord">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" class="icon" alt="Discord">
+                Discord
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            localStorage.setItem('theme', newTheme);
+        }
+const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add(savedTheme);
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+    </script>
+</body>
+</html>
